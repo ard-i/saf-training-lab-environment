@@ -1,0 +1,23 @@
+name: Demo Gold Image Pipeline for NGINX
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  gold-image: 
+    name: Gold Image Pipeline
+    runs-on: ubuntu-20.04
+    env:
+      CHEF_LICENSE: accept
+      PROFILE: my_nginx
+    steps:
+      - name: Update ubuntu
+        run: sudo apt-get update -y
+
+      - name: PREP - Install InSpec executable
+        run: curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec -v 5
+
+      - name: PREP - Install profile
+        uses: actions/checkout@v3
