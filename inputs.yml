@@ -5,3 +5,10 @@ nginx_owner: "nginx"
 uses_pki: false
 sys_admin: ["root"]
 sys_admin_group: ["root"]
+admin_users:
+  - root
+  - randy
+nginx_modules:
+  - http_ssl
+  - stream_ssl
+  - mail_ssl

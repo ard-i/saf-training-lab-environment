@@ -1,0 +1,7 @@
+---
+lockfile_version: 1
+depends:
+- name: my_nginx
+  resolved_source:
+    path: "/workspaces/saf-training-lab-environment/my_nginx"
+  version_constraints: []
