@@ -19,3 +19,16 @@ jobs:
   # updating all dependencies is always a good start
       - name: PREP - Update runner              
         run: sudo apt-get update
+
+      - name: PREP - Install InSpec executable 
+        run: curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec -v 5
+
+      - name: PREP - Install SAF CLI
+        run: npm install -g @mitre/saf
+
+      # checkout the profile, because that's where our profile is!
+      - name: PREP - Check out this repository  
+        uses: actions/checkout@v3
+
+      - name: LINT - Run InSpec Check           
+        run: inspec check $PROFILE
