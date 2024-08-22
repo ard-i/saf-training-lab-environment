@@ -3,7 +3,7 @@ control 'nginx-version' do
   title 'NGINX version'
   desc 'The required version of NGINX should be installed.'
   describe nginx do
-    itssssss('version') { should cmp >= input('org_allowed_nginx_version') }
+    its('version') { should cmp >= input('org_allowed_nginx_version') }
   end
 end
 
@@ -106,6 +106,15 @@ command('find ~/* -type f -maxdepth 0 -xdev').stdout.split.each do |fname|  # we
   # there could be a LOT of output if we are not specific enough with the search!
   describe file(fname) do
     its('owner') { should cmp 'ec2-user' }
+  end
+end
+
+control 'nginx-interview' do
+  impact 1.0
+  title 'Interview'
+  desc 'Interview!'
+  describe "manual" do
+    skip "nginx interview"
   end
 end
 
