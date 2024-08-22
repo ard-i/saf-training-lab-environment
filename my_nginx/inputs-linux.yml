@@ -2,7 +2,7 @@ admin_users:
   - admin
   - root
 
-nginx_version: "1.10.3"
+org_allowed_nginx_version: "1.10.3"
 
 nginx_modules: 
   - http_ssl
