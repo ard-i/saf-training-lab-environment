@@ -1,3 +1,10 @@
 admin_users:
   - admin
   - root
+
+nginx_version: "1.10.3"
+
+nginx_modules: 
+  - http_ssl
+  - stream_ssl
+  - mail_ssl

@@ -81,3 +81,12 @@ jobs:
         continue-on-error: true
         run: |
           curl -# -s -F data=@results/pipeline_run_attested.json -F "filename=${{ github.actor }}-pipeline-demo-${{ github.sha }}.json" -F "public=true" -F "evaluationTags=${{ github.repository }},${{ github.workflow }}" -H "Authorization: Api-Key ${{ secrets.HEIMDALL_API_KEY }}" "https://heimdall-demo.mitre.org/evaluations"
+
+      - name: VERIFY - Display our results summary 
+        run: |
+          saf view summary -i results/pipeline_run_attested.json
+        
+        # check if the pipeline passes our defined threshold
+      - name: VERIFY - Ensure the scan meets our results threshold           
+        run: |
+          saf validate threshold -i results/pipeline_run_attested.json -F threshold.yml
