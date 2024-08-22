@@ -48,7 +48,7 @@ control 'nginx-shell-access' do
   title 'NGINX shell access'
   desc 'The NGINX shell access should be restricted to admin users.'
   describe users.shells(/bash/).usernames do
-    it { should be_in ['root']}
+    it { should be_in ['root'] }
   end
 end
 
